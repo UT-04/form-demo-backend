@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const HttpError = require('./util/HttpError');
+const AuthRoutes = require('./routes/Auth');
 
 // Initializing express app
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes here
+app.use('/api/auth', AuthRoutes);
 
 // Default=> If no route matches the url
 app.use((req, res, next) => {
